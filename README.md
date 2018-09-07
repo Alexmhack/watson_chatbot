@@ -235,3 +235,14 @@ will i be able to get my flowers on sundays
 
 There can be lots and lots more of user examples and even mistakes in spelling from
 the user side so the **more the examples better the assistant** gets trained.
+
+# Importing Entities
+We can actually create a csv file which then can be imported to our watson assistant.
+In **Entities** section hover on the first arrow just after the Entities button,
+it should say something for ```import```
+
+Click on the import button and you will find the format of csv file for importing 
+entities. Create a file like that and then choose the file from your computer
+
+Entities will be imported and watson will be trained with them. Don't forget to check 
+chatbot after training each time.
