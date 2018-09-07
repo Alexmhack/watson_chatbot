@@ -145,3 +145,93 @@ display it under the message
 The same way create intents for ```#thank_you``` and ```#goodbyes```
 
 **NOTICE** how I wrote ```thank_you``` because intent name cannot have spaces in it
+
+Since we are making a chatbot assistant for a flower shop we would need more
+intents than just ```greetings``` and ```goodbyes```
+
+**Create** intents for ```#flower_suggestions``` and ```#delivery_info``` 
+
+If a user asks for flower suggestions or flower recommendations then 
+```#flower_suggestions``` intent will be avoked and if asks for delivery information
+the ```#delivery_info``` intent will be activated
+
+Some user examples are
+
+**#flower_suggestions**
+```
+bouquet for girlfriend
+flower recommendations
+flowers for anniverseries
+flowers for a yound lady
+flowers for friend
+flowers for judges
+flowers for marriage function
+flowers for my aunt
+flowers for my uncle
+flowers for your daddy
+flowers for your father
+flowers for your mother
+flowers for your soulmate
+flower suggestions
+glowers for anniverseries
+I'd like to buy some flowers for a sick friend
+i want a bouquet for my wife
+i want flower for award ceremony
+i want flowers for funeral
+i want flowers for marriage function
+i want flowers for my gf
+i want flowers for my loved ones
+i want flowers for wedding gift
+I want flowers that express sympathy
+i want to send flowers to my friend
+recommend arrangement of flowers for gettogether
+recommend arrangement of flowers for relatives
+recommend best flowers for award ceremony
+recommend best flowers for award function
+recommend best flowers for chief guest welcome
+recommend flowers for date
+recommend me flowers
+suggest best flowers for valentines day
+suggest flowers for a date
+suggest flowers for award ceremony
+suggest flowers for funeral
+suggest flowers for girl
+suggest flowers for greeting chief guest
+suggest flowers for honouring chief guest
+suggest flowers for teachers day
+suggest flowers for wedding
+suggest flowers for wedding function
+suggest some nice flowers
+what kind of flowers
+what should be a good arrangement to give someone when they're retiring
+which flower for a birthday
+which flower for a funeral
+which flower should i buy
+which type of flowers are good choice as anniversery gift for your parents
+which type of flowers are good choice when meeting someone
+which variety of flowers do you have
+...
+```
+
+**#delivery_info**
+```
+Do you deliver
+do you deliver during holidays
+do you deliver on weekends
+how do i get my flowers
+how much is delivery expenses
+how much time in delivery
+how will you deliver
+is delivery free
+what do ou deliver
+when do you deliver
+when will I get my delivery
+when will i get my flowers
+when will i receive my flowers
+when will you deliver
+will i be able to get my flowers on sundays
+...
+```
+
+There can be lots and lots more of user examples and even mistakes in spelling from
+the user side so the **more the examples better the assistant** gets trained.
