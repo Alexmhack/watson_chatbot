@@ -1,0 +1,25 @@
+gender,non binary,agender,intersex,both,neither,genderqueer,genderfluid
+gender,male,man,guy,boy
+gender,female,lady,girl,woman
+occasion,Graduation,graduating,grad,graduate,commencement
+occasion,Valentine's Day,February 14,valentines,Feb 14,February 14th,heart day
+occasion,Get Well,sickness,ill,disease,cancer,hospital
+occasion,Anniversary
+occasion,Retirement
+occasion,Funeral,condolences,sorrow,grief,sympathy,wake,Shiva,celebration of life
+occasion,Birthday,b-day,bday,birth day
+occasion,Mother's Day,Mothering Sunday,Mum's Day,Mom's Day
+occasion,Congratulations,award,success
+occasion,Wedding,best man,bride,groom,bridesmaid
+occasion,Christmas,December 25,Dec 25,December 25th,Yule
+relationship,wife
+relationship,girlfriend,fiancee,GF
+relationship,husband
+relationship,boyfriend,beau
+relationship,mother,mama,momsie,mommy,mum,mom
+relationship,father,pops,daddy,dad
+relationship,relative,step,cousin,aunt,uncle,granny,grannie,grandpa,grandma,brother,sister
+relationship,friend,trainer,professor,companion,bestie,roommate,neighbor,teacher,coach,colleague,associate,acquaintance,BFF
+response_types,negative,not that I know of,not at all,definitely not,nope,no
+response_types,positive,sure,indeed,definitely,absolutely,yeppers,yup,yep,yeah,yes
+response_types,uncertain,not positive,maybe,don't know,not sure,unsure,unknown
