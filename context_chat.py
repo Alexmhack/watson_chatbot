@@ -31,8 +31,10 @@ while True:
 	if response['output']['text']:
 		print(response['output']['text'][0])
 
+	if response['options']:
+		print(response['options'])
+
 	# update the stored context with the latest received from dialog
 	context = response['context']
 
 	user_message = input(">> ")
-
