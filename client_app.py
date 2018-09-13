@@ -19,4 +19,7 @@ response = service.message(
 	input={
 		'text': ''
 	}
-)
+).get_result()
+
+print(f"USER: {response['input']['text']}")
+print(f"WATSON: {response['output']['text'][0]}")
