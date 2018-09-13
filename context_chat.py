@@ -31,8 +31,13 @@ while True:
 	if response['output']['text']:
 		print(response['output']['text'][0])
 
-	if response['options']:
-		print(response['options'])
+	try:
+		if response['output']['generic'][1]['title']:
+			print(response['output']['generic'][1]['title'])
+			for opt in response['output']['generic'][1]['options']:
+				print(opt['value']['input']['text'])
+	except Exception as e:
+		print(e)
 
 	# update the stored context with the latest received from dialog
 	context = response['context']
