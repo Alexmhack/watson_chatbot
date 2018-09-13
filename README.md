@@ -246,3 +246,163 @@ entities. Create a file like that and then choose the file from your computer
 
 Entities will be imported and watson will be trained with them. Don't forget to check 
 chatbot after training each time.
+
+# Creating Dialogs
+In the dialogs section of our chatbot tool you should see that two dialogs ```welcome```
+and ```anything_else``` nodes are already there for us with default values
+
+If you try out the chatbot again you should see a welcome response from the chatbot.
+We will make this response more relating to our florence shop so click on the 
+```welcome``` node and in the ```Then respond with:``` section enter your preferred text
+for welcoming, the text should be very limited to the scope of our chatbot and should not include all the features that our chatbot supports, a nice welcome message would be
+
+```
+Hello. My name is Florence and I am a chatbot. How can I help you? You can ask me about 
+flower suggestions or delivery information.
+```
+
+Now try out the chatbot again and it welcomes us with the new message.
+
+If you type in Hello to the chatbot it doesn't respond with anything but we have our 
+intent for greeting ready with lots of examples. So for greeting intent to take action
+we need to create a dialog node for greeting.
+
+1. Click on **Add node**
+2. Name your node for e.g. **Greeting**
+3. In **If bot recognizes:** portion enter the entity name
+	```
+	If bot recognizes:
+	#grettings
+	```
+4. Next enter the response
+	```
+	Then respond with:
+	Hi I am here to help you. Feel free to ask me for flower recommendations or delivery information.
+	```
+5. Close by clicking on cross and try out the chatbot again
+
+Similarly create dialog nodes for **Thank You** but be sure to put your nodes above
+**anything_else** node, you can move your nodes by clicking on the three dots
+
+Once we have our nodes ready we can jump onto more advanced chit-chat dialog flow.
+If a user asks about flower suggestions for his father our chatbot will recognize
+the entity but won't respond. For that we have to make a parent node which handles
+flower suggestions and then child nodes from it which responds to 
+```@relationship:father``` and we need to make our parent node jump to the child node
+using the options given at end of node.
+ 
+For recommending same flowers to more than one relationship we can use ```and```
+```or``` responses
+
+For more relationships create more child nodes with same name 
+```Relationship Suggestion``` and change the condition to the whichever relation 
+you are pointing to and add response accordingly
+
+# Integrating Watson Chatbot Into Python
+So far we have been making a watson chatbot, there is a lot more that can be improved in
+our chatbot but we will proceed with that later. In this section we will use the watson
+[python-sdk](https://console.bluemix.net/docs/services/conversation/develop-app.html#building-a-client-application) to communicate with our chatbot using python
+
+In ```client_app.py``` we have some imports at the top
+
+```
+import os
+import watson_developer_cloud
+
+from dotenv import load_dotenv, find_dotenv
+```
+
+You might be very well aware with ```os``` module but the other two modules need to be 
+installed using pip (or any other source)
+
+```
+pip install --upgrade watson-developer-cloud
+```
+
+watson-developer-cloud is the python package to handle the watson python integration.
+
+```
+pip install python-dotenv
+```
+
+dotenv package in python is used to handle the ```.env``` file and the env variables inside 
+the file, if you have worked with django you should be aware of the env variables.
+
+Create a ```.env``` file and ```.gitignore``` file if not exists in the main folder and 
+add ```.env``` in ```.gitignore```
+
+Your ```.env``` file should have
+
+```
+WATSON_USERNAME=YOUR USERNAME
+WATSON_PASSWORD=YOUR PASSWORD
+WATSON_WORKSPACEID=YOUR WORKSPACE ID
+WATSON_VERSION=YOUR VERSION
+```
+
+Put your credentials from the ```menu > deploy``` in the **watson chatbot tool**
+
+In the [docs](https://console.bluemix.net/docs/services/conversation/develop-app.html#building-a-client-application) for python watson client application you can find this in more detail.
+
+Once you have your env file ready you can use the variables with **watson_developer_cloud**
+
+**client_app.py**
+```
+import os
+import watson_developer_cloud
+
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
+service = watson_developer_cloud.AssistantV1(
+	username=os.getenv("WATSON_USERNAME"),
+	password=os.getenv("WATSON_PASSWORD"),
+	version=os.getenv("WATSON_VERSION")
+)
+
+workspace_id = os.getenv("WATSON_WORKSPACEID")
+```
+
+Notice we import two methods from ```dotenv``` (python-dotenv) package namely 
+```load_dotenv``` and ```find_dotenv```
+
+```load_dotenv``` will load the env variables from the path specified and ```find_dotenv``` 
+will locate the ```.env``` file from the folder in which the python file is located. We have
+our .env file in the path as our python file, hence we have successfully loaded our env 
+variables.
+
+Now ```os``` module comes in handy, it gives us the variable values from their keys
+
+**NOTE:** Your env variables should not conflict with the existing system (Computer) 
+variables.
+
+## Communicating With Watson
+
+**client_app.py**
+```
+# Start conversation with an empty message
+response = service.message(
+	workspace_id=workspace_id,
+	input={
+		'text': ''
+	}
+).get_result()
+
+```
+
+We use the ```service``` to send a message to our chatbot which is contained inside the 
+```input``` dict with ```'text': ''``` and at last we need to use the ```get_result()```
+method on the repsonse message so that it is converted into a json serializable object
+
+Now simply print the ```response``` and run the file and you should find long json data.
+
+Analyze the json data and print out the useful information like the input and output text
+
+```
+
+print(f"USER: {response['input']['text']}")
+print(f"WATSON: {response['output']['text'][0]}")
+```
+
+Run the file again and you should get the specific information.
